@@ -1,0 +1,14 @@
+<h4 class="text-center text-black bg-secondary">Renkler</h4>
+<table class="table">
+  <thead>
+      <tr>
+        <th>No</th>
+        <th>Adı</th>
+     
+      </tr>
+    </thead>
+  <tr *ngFor="let color of colors">
+    <td>{{ color.id }}</td>
+    <td>{{ color.colorName }}</td>
+  </tr>
+</table>
