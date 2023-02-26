@@ -1,5 +1,5 @@
 export interface Rental{
-    customerName:string;
+    userName:string;
     brandName:string;
     colorName:string;
     modelName:string;
