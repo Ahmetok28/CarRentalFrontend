@@ -1,0 +1,49 @@
+.favorite-icon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .fa-star-o {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: yellow;
+  }
+  .fa-star{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: aliceblue;
+  }
+ .form-check-input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.form-check-input[type="checkbox"] + label::before {
+  content: "\f006";
+  font-family: "Font Awesome 5 Free";
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.form-check-input[type="checkbox"]:checked + label::before {
+  content: "\f005";
+  color: #f0ad4e;
+}
+.checkbox-label-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-label-container label {
+    margin-left: 10px;
+  }
+  

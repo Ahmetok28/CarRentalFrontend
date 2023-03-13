@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Color } from 'src/app/models/color';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ColorService } from 'src/app/services/color.service';
 
 @Component({
@@ -11,6 +12,10 @@ export class ColorComponent implements OnInit{
   
   colors:Color[]=[];
   currentColor:Color|null;
+  filterText=""
+  colorForm = new FormGroup({
+    color: new FormControl(this.colors),
+  });
   constructor(private colorService:ColorService){}
   
   ngOnInit(): void {

@@ -1,49 +1,95 @@
-<div class="row ">
-
-    <div *ngIf="carImage.length > 0" id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="true">
-        <ol class="carousel-inner">
-          <li *ngFor="let carImage of carImage; let i = index" 
-          [attr.data-bs-slide-to]="i" [class.active]="i == 0"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item" *ngFor="let carImage of carImage; let i = index" [class.active]="i == 0">
-            <img [src]="getImagePath(carImage)" class="d-block fit" style="width:720px;height: 480px" alt="car image">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next"  type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div> 
-</div>   
-  <br> 
-  
-  <div class="col-md-9 cardsize" 
-    
-    *ngFor = "let car of car " >
-      <div class="card  ">
-       
-
-        <div class="card-body">
-          
-          <h4 class="card-title text-center">{{car.brandName |uppercase}} </h4>
-          <h6 class="text-center">{{car.modelName}} </h6>
-        </div>
-        <ul class="list-group list-group-flush text-center text-bolder">
-          <li class="list-group-item"><i><b>Model Yılı</b></i> | {{car.modelYear}}</li>
-          <li class="list-group-item"><i><b>Renk</b></i> | {{car.colorName}}</li>
-          <li class="list-group-item"><i><b>Detaylar</b></i> | {{car.description}}</li>
-          <li class="list-group-item"><i><b>Günlük Fiyat</b></i> | {{car.dailyPrice  | currency:"₺ " }}</li>
-          
-          
-        </ul>
-        <button 
-          type="button" class="btn btn-success">Aracı Şimdi Kirala</button>
-       
+<div class="row">
+  <div
+    *ngIf="carImage.length > 0"
+    id="carouselExampleFade"
+    class="carousel slide carousel-fade"
+    data-bs-ride="true"
+  >
+    <ol class="carousel-inner">
+      <li
+        *ngFor="let carImage of carImage; let i = index"
+        [attr.data-bs-slide-to]="i"
+        [class.active]="i == 0"
+      ></li>
+    </ol>
+    <div class="carousel-inner">
+      <div
+        class="carousel-item"
+        *ngFor="let carImage of carImage; let i = index"
+        [class.active]="i == 0"
+      >
+        <img
+          [src]="getImagePath(carImage)"
+          class="d-block fit"
+          style="width: 720px; height: 480px"
+          alt="car image"
+        />
       </div>
-      <br>
-   </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleFade"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleFade"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<br />
+
+<div class="col-md-9 cardsize" *ngFor="let car of car">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title text-center">{{ car.brandName | uppercase }}</h4>
+      <h6 class="text-center">{{ car.modelName }}</h6>
+    </div>
+    <ul class="list-group list-group-flush text-center text-bolder">
+      <li class="list-group-item">
+        <i><b>Model Yılı</b></i> | {{ car.modelYear }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Renk</b></i> | {{ car.colorName }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Detaylar</b></i> | {{ car.description }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Günlük Fiyat</b></i> | {{ car.dailyPrice | currency : "₺ " }}
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="" >
+          <button (click)="navigateToDetails(car.carId)" type="button" class="btn btn-success">
+           Aracı Şimdi Kirala
+            
+          </button>
+        </div>
+        
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <button  (click)="addToCart(car)" type="button" class="btn">
+            Sepete Ekle  
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <br />
+ 
+</div>
+
+

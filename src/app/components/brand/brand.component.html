@@ -1,24 +1,30 @@
-
-<div class="table">
-  <h4 class="text-center">Markalar</h4>
-  <ul class="list-group" id="ReCap-Brands" >
-    <li
-      [class]="getAllBrandClass()"
-      routerLink="/cars"
-      (click)="deleteCurrentBrandClass()"> 
-    Tüm Arabaları Listele
-    </li>
-    <li
-      (click)="setCurrentBrand(brand)"
-      routerLink="/cars/brand/{{brand.id}}"
+<form [formGroup]="brandForm">
+  <label
+    for="brands"    
+    (click)="deleteCurrentBrand()"
+    [class]="getAllBrandClass()"
+    routerLink="/cars"
+    >Markalar:</label
+  >
+  <select
+    formControlName="brand"
+    class="form-select"
+    id="brands"
+  >
+    <option
       *ngFor="let brand of brands"
+      [value]="brand.id"
       [class]="getCurrentBrandClass(brand)"
-      >
-      {{brand.brandName}} 
-    </li>
-   
-      
-  </ul>
-</div>
-
-
+      onchange="setCurrentBrand(brand)"
+    >
+      {{ brand.brandName }}
+    </option>
+  </select>
+  <button
+    type="submit"
+    class="btn btn-info mt-2"
+    routerLink="/cars/brand/{{ brandForm.value.brand }}"
+  >
+    Filtrele
+  </button>
+</form>

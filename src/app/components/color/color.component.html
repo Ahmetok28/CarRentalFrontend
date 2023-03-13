@@ -1,4 +1,45 @@
+<form [formGroup]="colorForm">
+  <label
+    for="colors"    
+    (click)="deleteCurrentColor()"
+    [class]="getAllColorClass()"
+    routerLink="/cars"
+    >Renkler:</label
+  >
+  <select
+    formControlName="color"
+    class="form-select"
+    id="colors"
+  >
 
+    <option
+      *ngFor="let color of colors"
+      [value]="color.id"
+      [class]="getCurrentColorClass(color)"
+      onchange="setCurrentColor(color)"
+    >
+      {{ color.colorName }}
+    </option>
+  </select>
+  <button
+    type="submit"
+    class="btn btn-info mt-2"
+    routerLink="/cars/color/{{ colorForm.value.color }}"
+  >
+    Filtrele
+  </button>
+</form>
+
+
+
+
+
+
+
+<!-- <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label"></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ara">
+</div>
 
 <div class="table">
   <h4 class="text-center">Renkler</h4>
@@ -12,10 +53,10 @@
     <li
       (click)="setCurrentColor(color)"
       routerLink="/cars/color/{{color.id}}"
-      *ngFor="let color of colors"
       [class]="getCurrentColorClass(color)"
+       *ngFor="let color of colors | filterPipe: filterText:['colorName']"
       >
       {{color.colorName}} 
     </li>   
   </ul>
-</div> 
+</div>  -->

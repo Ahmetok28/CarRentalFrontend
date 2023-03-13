@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormBuilder,FormControl,Validators,ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -9,13 +11,27 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
   brands: Brand[] = [];
+  brandForm = new FormGroup({
+    brand: new FormControl(this.brands),
+  });
+  
+  
   currentBrand:Brand|null;
+  selectedBrand: Brand;
+  filterText=""
 
-  constructor(private brandService: BrandService) {}
+ 
+
+  constructor(private brandService: BrandService,
+    private toastrService:ToastrService,
+    private formBuilder:FormBuilder) {}
 
   ngOnInit(): void {
     this.getBrands();
+
+    
   }
+  
 
   getBrands() {
     this.brandService.getBrands().subscribe((response) => {
@@ -41,7 +57,15 @@ export class BrandComponent implements OnInit {
       return "list-group-item" 
     }
   }
-  deleteCurrentBrandClass(){
+  deleteCurrentBrand(){
     this.currentBrand=null;
   }
+  
+  
+
+onBrandSelect(id: number) {
+  this.selectedBrand = this.brands.find(brand => brand.id == id);
+}
+  
+
 }

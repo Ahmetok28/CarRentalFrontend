@@ -1,0 +1,14 @@
+<li *ngIf="cartItems.length>0"  class="nav-item dropdown d-flex">
+  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Sepet
+  </a>
+  <ul class="dropdown-menu">
+    <li *ngFor="let cartItem of cartItems">
+      <a class="dropdown-item" routerLink="rentals/add/{{cartItem.car.carId}}"> 
+        <span class="badge bg-secondary">{{cartItem.quantity}}</span> {{ cartItem.car.modelName }} Araç {{cartItem.car.dailyPrice}} TL<span (click)="removeFromCart(cartItem.car)" class="badge bg-secondary">Sil</span></a>
+    </li>
+
+    <li><hr class="dropdown-divider" /></li>
+    <li><a  class="dropdown-item">Kiralama detayına Git</a></li>
+  </ul>
+</li>

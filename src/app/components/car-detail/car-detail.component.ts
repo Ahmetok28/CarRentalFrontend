@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarImages } from 'src/app/models/carImages';
 import { Cars } from 'src/app/models/cars';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarsService } from 'src/app/services/cars.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { RentalService } from 'src/app/services/rental.service';
+import { Rental } from 'src/app/models/rental';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
+
 
 @Component({
   selector: 'app-car-detail',
@@ -14,10 +20,21 @@ export class CarDetailComponent implements OnInit{
   
   car:Cars[]=[]
   carImage:CarImages[]=[];
-  imagePath = "https://localhost:7132/uploads/images/"
+  imagePath = "https://localhost:7132/uploads/images/";
+  currentCar:Cars
+   rental:Rental[]=[];
+   currentRental:Rental
+   currentImage: CarImages;
 
 
-  constructor(private carsService:CarsService,private carImageService:CarImageService,private activatedRoute:ActivatedRoute){}
+
+  constructor(private carsService:CarsService,
+    private carImageService:CarImageService,
+    private activatedRoute:ActivatedRoute,
+    private cartService:CartService,
+    private toastrService:ToastrService,
+    private router: Router
+    ){}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -29,6 +46,9 @@ export class CarDetailComponent implements OnInit{
      
     }); 
     
+  }
+  navigateToDetails(carId: number) {
+    this.router.navigate(['/rentals/add', carId]);
   }
 
   getCarDetail(carId:number){
@@ -45,5 +65,27 @@ export class CarDetailComponent implements OnInit{
     let path = this.imagePath + carImage.imagePath;
     return path;
    }
+
+     
+   setCurrentRental(rental:Rental){
+    this.currentRental=rental;
+  }
+
+
+
+
+addToCart(car:Cars){ 
+  
+    this.toastrService.success("Sepete eklendi",car.modelName)
+    this.cartService.addToCart(car);
+
+
+
+}
+sertCurrentCar(car:Cars){
+  this.currentCar=car;
+}
+
+
 
 }

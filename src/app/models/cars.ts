@@ -9,5 +9,7 @@ export interface Cars{
     dailyPrice:number;
     imagePath:string;
     description:string;
+    isFavorite: boolean;
+    
 
 }

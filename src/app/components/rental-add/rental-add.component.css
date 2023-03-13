@@ -1,0 +1,34 @@
+.car-image {
+    position: relative;
+  }
+  
+  .car-image img {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  @media (max-width: 768px) {
+    .car-image img {
+      position: relative;
+      display: block;
+      margin: auto;
+      top: unset;
+      right: unset;
+    }
+  }
+  label {
+    display: block;
+  }
+  
+  
+  .form-control {
+    height: 40px;
+  }
+  
+  @media (min-width: 768px) {
+    .form-control {
+      height: 50px;
+    }
+  }
+ 
+  
