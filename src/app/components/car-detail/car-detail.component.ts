@@ -52,7 +52,7 @@ export class CarDetailComponent implements OnInit{
   }
 
   getCarDetail(carId:number){
-    this.carsService.getByCarId(carId).subscribe(response=>{
+    this.carsService.getCarDetailsByCarIdId(carId).subscribe(response=>{
       this.car=response.data;
     })
   }

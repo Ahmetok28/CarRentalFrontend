@@ -46,4 +46,9 @@
   .checkbox-label-container label {
     margin-left: 10px;
   }
-  
+  @media screen and (max-width: 1080px) {
+    .my-element {
+      position: relative;
+      top: 50px;
+    }
+  }

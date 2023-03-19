@@ -1,0 +1,35 @@
+<div class="card w-50 mx-auto mt-5">
+    <div class="card-header">
+      <div class="card-title fw-bolder my-2 text-center">Güncelle</div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="updateColorForm" *ngIf="selectedColor">
+        <div class="form-group">
+          <label for="id" class="my-3">Id</label>
+          <input
+            type="number"
+            id="id"
+            class="form-control"
+            formControlName="id"
+          />
+        </div>
+        <div class="form-group">
+          <label for="colorName" class="my-3">Name</label>
+          <input
+            type="text"
+            id="colorName"
+            class="form-control"
+            formControlName="colorName"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <button
+        (click)="update()"
+        type="button"
+        class="btn btn-dark w-20 d-block mx-auto my-3">
+        Güncelle
+      </button>
+    </div>
+  </div>

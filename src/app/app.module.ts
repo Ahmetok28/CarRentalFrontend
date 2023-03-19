@@ -20,6 +20,12 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { PayComponent } from './components/pay/pay.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +44,12 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
     CartSummaryComponent,
     PayComponent,
     RentalAddComponent,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
+    CarUpdateComponent,
+    BrandUpdateComponent,
+    ColorUpdateComponent,
   ],
   imports: [
     BrowserModule,

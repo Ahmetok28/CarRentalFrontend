@@ -33,7 +33,7 @@ export class RentalAddComponent implements OnInit {
     this.createRentalAddForm();
     this.activatedRoute.params.subscribe((params) => {
       if (params['carId']) {
-        this.carService.getByCarId(params['carId']).subscribe((response) => {
+        this.carService.getCarDetailsByCarIdId(params['carId']).subscribe((response) => {
           this.car = response.data;
           this.getRentDates(params['carId']);
         });
