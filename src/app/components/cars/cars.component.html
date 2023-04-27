@@ -1,110 +1,97 @@
 <div class="my-element">
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <app-brand></app-brand>
-      <app-color></app-color>
-    </div>
-    <div class="col-md-9">
-      <head>
-        ...
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          href="cars.component.css"
-          crossorigin="anonymous"
-        />
-      </head>
-
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"></label>
-        <input
-          type="text"
-          [(ngModel)]="filterText"
-          class="form-control"
-          id="filterText"
-          placeholder="Ara"
-        />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <app-brand></app-brand>
+        <app-color></app-color>
       </div>
+      <div class="col-md-9">
+        <head>
+          ...
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            href="cars.component.css"
+            crossorigin="anonymous"
+          />
+        </head>
 
-      <div class="row">
-        <div
-          class="col-sm-12 col-md-4 col-lg-4 mb-4 ml-1"
-          *ngFor="let car of cars | filterPipe : filterText : ['modelName']"
-        >
-          <div class="car-body" class="col-md-4">
-            <div class="card" style="width: 18rem">
-              <div class="form-check">
-                <div class="checkbox-label-container">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    [(ngModel)]="car.isFavorite"
-                    [id]="'favorite-' + car.modelName"
-                    (click)="addToFavorites(car)"
-                  />
-                  <label
-                    class="form-check-label"
-                    [for]="'favorite-' + car.modelName"
-                  >
-                  </label>
-                </div>
-              </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"></label>
+          <input
+            type="text"
+            [(ngModel)]="filterText"
+            class="form-control"
+            id="filterText"
+            placeholder="Ara"
+          />
+        </div>
 
-              <img
-                [src]="getCarImage(car)"
-                img
-                class="img-rounded"
-                alt="Cinque Terre"
-              />
-
-              <div class="card-body">
-                <h3 class="card-title text-center">{{ car.modelName }}</h3>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <i><b>Marka</b></i> | {{ car.brandName }}
-                </li>
-                <li class="list-group-item">
-                  <i><b>Model Yılı</b></i> | {{ car.modelYear }}
-                </li>
-                <li class="list-group-item">
-                  <i><b>Günlük Fiyat</b></i> |
-                  {{ car.dailyPrice | currency : "₺ " }}
-                </li>
-              </ul>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="">
-                    <button
-                      (click)="setCurrentCar(car)"
-                      routerLink="/cars/car/{{ car.carId }}"
-                      type="button"
-                      class="btn btn-primary btn-lg"
+        <div class="row">
+          <div
+            class="col-sm-12 col-md-4 col-lg-4 mb-4 ml-1"
+            *ngFor="let car of cars | filterPipe : filterText : ['modelName']"
+          >
+            <div class="car-body" class="col-md-4">
+              <div class="card" style="width: 18rem">
+                <div class="form-check">
+                  <div class="checkbox-label-container">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      [(ngModel)]="car.isFavorite"
+                      [id]="'favorite-' + car.modelName"
+                      (click)="addToFavorites(car)"
+                    />
+                    <label
+                      class="form-check-label"
+                      [for]="'favorite-' + car.modelName"
                     >
-                      Detaya Git
-                    </button>
+                    </label>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="card">
-                    <button type="button" class="btn btn-primary btn-lg">
-                      Güncelle
-                    </button>
-                  </div>
+
+                <img
+                  [src]="getCarImage(car)"
+                  img
+                  class="img-rounded"
+                  alt="Cinque Terre"
+                />
+
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{ car.modelName }}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <i><b>Marka</b></i> | {{ car.brandName }}
+                  </li>
+                  <li class="list-group-item">
+                    <i><b>Model Yılı</b></i> | {{ car.modelYear }}
+                  </li>
+                  <li class="list-group-item">
+                    <i><b>Günlük Fiyat</b></i> |
+                    {{ car.dailyPrice | currency : "₺ " }}
+                  </li>
+                </ul>
+                <div class="row">
+                  <button
+                    (click)="setCurrentCar(car)"
+                    routerLink="/cars/car/{{ car.carId }}"
+                    type="button"
+                    class="btn btn-primary btn-lg"
+                  >
+                    Detaya Git
+                  </button>
                 </div>
               </div>
-            </div>
 
-            <br />
+              <br />
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 <!-- 
 <head>

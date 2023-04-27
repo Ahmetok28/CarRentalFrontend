@@ -10,6 +10,7 @@ export interface Cars{
     imagePath:string;
     description:string;
     isFavorite: boolean;
+    minFindeksPoint: number
     
 
 }

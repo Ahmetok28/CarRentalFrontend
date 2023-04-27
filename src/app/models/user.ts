@@ -5,4 +5,5 @@ export interface User {
     roles?: string[];
     customerId: number;
     companyName: string;
+    findeksPoint: number
 }

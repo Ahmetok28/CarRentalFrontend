@@ -1,5 +1,6 @@
-export interface Card {
-    
+export interface CreditCard {
+    id:number;
+    customerId:number;
     fullName: string;
     cardNumber: string;
     month: number;

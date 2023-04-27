@@ -48,7 +48,7 @@
 </div>
 <br />
 
-<div class="col-md-9 cardsize" *ngFor="let car of car">
+<div class="col-md-9 cardsize" *ngFor="let car of cars">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title text-center">{{ car.brandName | uppercase }}</h4>
@@ -70,11 +70,10 @@
     </ul>
     <div class="row">
       <div class="col-md-6">
-        <div class="" >
-          <button (click)="navigateToDetails(car.carId)" type="button" class="btn btn-success">
-           Aracı Şimdi Kirala
-            
-          </button>
+        <div class="card" >
+          <button class="btn"
+          type="button" data-bs-toggle="modal"
+          data-bs-target="#rent">Şimdi Kirala</button>
         </div>
         
       </div>
@@ -92,4 +91,44 @@
  
 </div>
 
+
+<div class="modal fade" id="rent" tabindex="-1"
+    aria-labelledby="car" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rent Car</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Rent
+                        Date:</label>
+                    <input class="form-control"
+                        type="datetime-local" [(ngModel)]="rentDate"
+                        id="rentDate">
+                </div>
+
+                <div class="mb-3"> 
+                    <label for="recipient-name" class="col-form-label">Return
+                        Date:</label>
+                    <input class="form-control"
+                        type="datetime-local" [(ngModel)]="returnDate"
+                        id="returnDate">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn
+                    btn-primary" (click)="rentRequest()"
+                    data-bs-dismiss="modal">Rent Car</button>
+            </div>
+        </div>
+    </div>
+</div>
 

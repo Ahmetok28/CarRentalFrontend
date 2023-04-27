@@ -6,4 +6,5 @@ name:string;
 modelYear:number;
 dailyPrice:number;
 description:string;
+minFindeksPoint: number
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -26,7 +26,18 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { PaySuccesComponent } from './components/pay-succes/pay-succes.component';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarsForAdminComponent } from './components/cars-for-admin/cars-for-admin.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ColorsForAdminComponent } from './components/colors-for-admin/colors-for-admin.component';
+import { BrandsForAdminComponent } from './components/brands-for-admin/brands-for-admin.component';
+import { UsersForAdminComponent } from './components/users-for-admin/users-for-admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +61,15 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
     CarUpdateComponent,
     BrandUpdateComponent,
     ColorUpdateComponent,
+    LoginComponent,
+    RegisterComponent,
+    PaySuccesComponent,
+
+    CarsForAdminComponent,
+    ColorsForAdminComponent,
+    BrandsForAdminComponent,
+    UsersForAdminComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,8 +81,12 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
       positionClass: 'toast-bottom-right',
     }),
     BrowserAnimationsModule,
+    FontAwesomeModule,
+    NgxPaginationModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

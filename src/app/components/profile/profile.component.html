@@ -1,0 +1,124 @@
+<div class="container">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div *ngIf="profilePhotoPath !== null">
+                                <img [src]="profilePhotoPath" alt="user" class="rounded-circle p-1 bg-primary" width="110">
+                            </div>
+                            
+                            <div class="mt-3">
+                                <h4 *ngIf="user!==undefined"> {{user.firstName}} {{user.lastName}}</h4>
+                                <button class="btn btn-primary">Edit Pofile Photo</button>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="d-flex align-items-center mb-3">Müşteri Bilgileri</h5>                 
+                        <div *ngIf="user!==undefined">
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Şirket Adı</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="{{user.companyName}}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Findeks Puanı</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" disabled class="form-control" value="{{user.findeksPoint}}">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="button" class="btn btn-primary px-4" value="Save Changes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="d-flex align-items-center mb-3">Kullacıcı Bilgileri</h5> 
+                        <div *ngIf="user!==undefined">
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">First Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="{{user.firstName}}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Last Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="{{user.lastName}}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" disabled value="{{user.email}} ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="button" class="btn btn-primary px-4" value="Save Changes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="d-flex align-items-center mb-3">Kiralanan Araçlar</h5> 
+                                <table class="table">
+    
+                                    <thead>
+                                      <tr>
+                                        
+                                        <th>Marka</th>
+                                        <th>Model</th>
+                                        <th>Renk</th> 
+                                        <th>Kiralama Tarihi</th>
+                                        <th>Teslim Tarihi</th>
+                                      </tr>
+                                    </thead>
+                                    <tr *ngFor="let rental of rentals">
+                                      
+                                      <td>{{ rental.brandName }}</td>
+                                      <td>{{ rental.modelName }}</td>
+                                      <td>{{ rental.colorName }}</td>
+                                      <td>{{ rental.rentDate }}</td>      
+                                      <td>{{ rental.returnDate }}</td> 
+                                      
+                                    </tr>
+                                  </table> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
